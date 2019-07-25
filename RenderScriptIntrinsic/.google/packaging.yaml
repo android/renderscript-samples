@@ -1,0 +1,20 @@
+
+# GOOGLE SAMPLE PACKAGING DATA
+#
+# This file is used by Google as part of our samples packaging process.
+# End users may safely ignore this file. It has no relevance to other systems.
+---
+status:       PUBLISHED
+technologies: [Android]
+categories:   [RenderScript]
+languages:    [Java]
+solutions:    [Mobile]
+github:       android/renderscript
+level:        EXPERT
+icon:         screenshots/icon-web.png
+apiRefs:
+    - android:android.renderscript.RenderScript
+    - android:android.renderscript.ScriptIntrinsicBlur
+    - android:android.renderscript.ScriptIntrinsicConvolve5x5
+    - android:android.renderscript.ScriptIntrinsicColorMatrix
+license: apache2
