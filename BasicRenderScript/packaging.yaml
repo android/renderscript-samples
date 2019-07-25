@@ -1,0 +1,15 @@
+# GOOGLE SAMPLE PACKAGING DATA
+#
+# This file is used by Google as part of our samples packaging process.
+# End users may safely ignore this file. It has no relevance to other systems.
+---
+
+status:       PUBLISHED
+technologies: [Android]
+categories:   [RenderScript]
+languages:    [Java]
+solutions:    [Mobile]
+github:       googlesamples/android-BasicRenderScript
+level:        BEGINNER
+icon:         screenshots/icon-web.png
+license:      apache2-android
