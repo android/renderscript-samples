@@ -24,7 +24,7 @@ languages:    [Java]
 solutions:    [Mobile]
 github:       android/renderscript
 level:        EXPERT
-icon:         screenshots/icon-web.png
+icon:         BasicRenderScript/screenshots/icon-web.png
 apiRefs:
     - android:android.renderscript.RenderScript
     - android:android.renderscript.Allocation
