@@ -21,6 +21,7 @@ jobs:
     # but specifies master branch (old default).
     - uses: actions/checkout@v2
       with:
+        fetch-depth: 0
         ref: master
         
     - run: |
