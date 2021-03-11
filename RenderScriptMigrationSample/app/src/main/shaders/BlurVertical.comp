@@ -1,0 +1,46 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#version 450
+#pragma shader_stage(compute)
+
+layout (local_size_x_id = 0, local_size_y_id = 1) in;
+
+layout (binding = 0) uniform sampler2D inputImage;
+layout (binding = 1, rgba8) uniform writeonly image2D outputImage;
+
+layout (binding = 2, std140) uniform UBO {
+    // std140 requires each array element aligned to 16 bytes.
+    // Use vec4 for tightly packed float elements.
+    vec4 kernel[13];
+} ubo;
+
+layout (push_constant, std140) uniform PushConstant {
+    int radius;
+} constant;
+
+void main() {
+    vec4 blurredPixel = vec4(0.0, 0.0, 0.0, 1.0);
+    for (int r = -constant.radius; r <= constant.radius; ++r) {
+        // We do not need to manually clamp to edge here because we have specified
+        // VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE when creating the sampler.
+        vec2 coord = vec2(gl_GlobalInvocationID.x, gl_GlobalInvocationID.y + r);
+        vec3 pixel = texture(inputImage, coord).rgb;
+        int index = r + constant.radius;
+        blurredPixel.rgb += ubo.kernel[index / 4][index % 4] * pixel;
+    }
+    imageStore(outputImage, ivec2(gl_GlobalInvocationID.xy), blurredPixel);
+}

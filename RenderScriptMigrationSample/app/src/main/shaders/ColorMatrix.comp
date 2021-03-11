@@ -1,0 +1,33 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#version 450
+#pragma shader_stage(compute)
+
+layout (local_size_x_id = 0, local_size_y_id = 1) in;
+
+layout (binding = 0) uniform sampler2D inputImage;
+layout (binding = 1, rgba8) uniform writeonly image2D outputImage;
+
+layout (push_constant, std140) uniform PushConstant {
+    mat3 colorMatrix;
+} constant;
+
+void main() {
+    vec3 inputPixel = texture(inputImage, vec2(gl_GlobalInvocationID.xy)).rgb;
+    vec3 resultPixel = constant.colorMatrix * inputPixel;
+    imageStore(outputImage, ivec2(gl_GlobalInvocationID.xy), vec4(resultPixel, 1.0f));
+}
