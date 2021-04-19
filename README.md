@@ -8,8 +8,8 @@ This repository contains a set of individual Android Studio projects:
 ## Renderscript Support Status
 
 Renderscript has been deprecated since Android 12, the samples here are part of the Renderscript deprecation toolkits which also includes:
-- [renderscript deprecation blog](TODO)
-- [the migration guide](https://developer.android.com/guide/topics/renderscript/migration-guide)
+- [renderscript deprecation blog](https://android-developers.googleblog.com/2021/04/android-gpu-compute-going-forward.html)
+- [the migration guide](https://developer.android.com/guide/topics/renderscript/migrate)
 - [the migration toolkit library](https://github.com/android/renderscript-intrinsics-replacement-toolkit)
 
 

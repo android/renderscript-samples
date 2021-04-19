@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[RenderScript is being deprecated](TODO) since Android 12. We recommend computationally intensive applications to use [Vulkan](https://www.khronos.org/vulkan), the cross platform industry standard API. Please refer to the [RenderScript Migration Guide](https://developer.android.com/guide/topics/renderscript/migration-guide) for more details.
+[RenderScript is being deprecated](https://android-developers.googleblog.com/2021/04/android-gpu-compute-going-forward.html) since Android 12. We recommend computationally intensive applications to use [Vulkan](https://www.khronos.org/vulkan), the cross platform industry standard API. Please refer to the [RenderScript Migration Guide](https://developer.android.com/guide/topics/renderscript/migrate) for more details.
 
 To help developers for the migration, this sample is created to demonstrate how to apply the image filtering to a bitmap with the Vulkan compute pipeline. The sample creates a common ImageProcessor interface, on the top of Vulkan Compute and RenderScript, that performs two compute tasks:
 - HUE rotation: A simple compute task with a single compute kernel.
