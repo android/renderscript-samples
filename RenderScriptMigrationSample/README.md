@@ -12,7 +12,8 @@ Both tasks are implemented with RenderScript (intrinsics & custom scripts) and V
 
 ## Pre-requisites
 
-- Android Studio 4.0+
+- Android Studio Arctic Fox 2020.3.1+
+- SDK Build Tools 31.0.0+
 - NDK r20+
 - Android API 29+
 
