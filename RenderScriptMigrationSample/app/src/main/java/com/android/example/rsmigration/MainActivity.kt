@@ -18,6 +18,7 @@ package com.android.example.rsmigration
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -83,15 +84,20 @@ class MainActivity : AppCompatActivity() {
         mInputImage = loadBitmap(R.drawable.data)
 
         // Set up image processors
-        mImageProcessors =
-            arrayOf(
-                // RenderScript intrinsics
-                RenderScriptImageProcessor(this, useIntrinsic = true),
-                // RenderScript script kernels
-                RenderScriptImageProcessor(this, useIntrinsic = false),
-                // Vulkan compute pipeline
-                VulkanImageProcessor(this)
-            )
+        val imageProcessors = mutableListOf(
+            // RenderScript intrinsics
+            RenderScriptImageProcessor(this, useIntrinsic = true),
+            // RenderScript script kernels
+            RenderScriptImageProcessor(this, useIntrinsic = false),
+            // Vulkan compute pipeline
+            VulkanImageProcessor(this))
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            // RenderEffect
+            imageProcessors.add(RenderEffectImageProcessor())
+        }
+        mImageProcessors = imageProcessors.toTypedArray()
+
         mImageProcessors.forEach { processor ->
             processor.configureInputAndOutput(mInputImage, NUMBER_OF_OUTPUT_IMAGES)
         }
@@ -275,10 +281,10 @@ class MainActivity : AppCompatActivity() {
         mLatencyTextView.setText(R.string.benchmark_running_text)
 
         // Start a new thread to run benchmark without blocking the UI thread.
-        Thread(Runnable {
+        Thread {
             synchronized(mLock) {
                 // Run benchmark.
-                val avgMs = runBenchmark(mCurrentProcessor, mFilterMode, mSeekBar.progress);
+                val avgMs = runBenchmark(mCurrentProcessor, mFilterMode, mSeekBar.progress)
 
                 // Display benchmark result and re-enable widgets.
                 this@MainActivity.runOnUiThread {
@@ -289,6 +295,6 @@ class MainActivity : AppCompatActivity() {
                     mBenchmarkButton.isEnabled = true
                 }
             }
-        }).start()
+        }.start()
     }
 }

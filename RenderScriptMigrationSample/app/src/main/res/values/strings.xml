@@ -1,15 +1,20 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">RenderScript Migration Sample</string>
     <string name="image_content_desc">Image</string>
     <string name="latency_text">Latency: %1$f ms</string>
-    <string name="benchmark_running_text">Running benchmark...</string>
+    <string name="benchmark_running_text">Running benchmark…</string>
     <string name="benchmark_result_text">Avg. Latency: %1$f ms</string>
     <string name="benchmark_button">Benchmark</string>
     <string name="prcessor_spinner_label">Choose processor:</string>
-    <string-array name="processor_array">
-        <item>Renderscript Intrinsics</item>
-        <item>Renderscript Scripts</item>
-        <item>Vulkan</item>
+    <string name="renderscript_intrinsics">Renderscript Intrinsics</string>
+    <string name="renderscript_scripts">Renderscript Scripts</string>
+    <string name="vulkan">Vulkan</string>
+    <string name="render_effect">RenderEffect</string>
+
+    <string-array name="processor_array" tools:ignore="InconsistentArrays">
+        <item>@string/renderscript_intrinsics</item>
+        <item>@string/renderscript_scripts</item>
+        <item>@string/vulkan</item>
     </string-array>
     <string name="filter_spinner_label">Choose filter:</string>
     <string-array name="filter_array">
