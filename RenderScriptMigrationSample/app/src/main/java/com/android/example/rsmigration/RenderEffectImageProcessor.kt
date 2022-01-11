@@ -97,17 +97,17 @@ class RenderEffectImageProcessor : ImageProcessor {
         )
         val renderNode = RenderNode("RenderEffect")
         val hardwareBuffers = arrayOfNulls<HardwareBuffer>(numberOfOutputImages)
-        val matrices = Array(numberOfOutputImages) { ColorMatrix() }
+        val matrices = Array(numberOfOutputImages) {
+            val colorMatrix = ColorMatrix()
+            colorMatrix.array[18] = 1f
+            colorMatrix
+        }
         val hardwareRenderer = HardwareRenderer()
 
         init {
             hardwareRenderer.setSurface(imageReader.surface)
             hardwareRenderer.setContentRoot(renderNode)
             renderNode.setPosition(0, 0, imageReader.width, imageReader.height)
-            for (matrix in matrices) {
-                val mat = matrix.array
-                mat[18] = 1f
-            }
         }
     }
 }
