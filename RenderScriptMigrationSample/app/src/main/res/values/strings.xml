@@ -10,11 +10,13 @@
     <string name="renderscript_scripts">Renderscript Scripts</string>
     <string name="vulkan">Vulkan</string>
     <string name="render_effect">RenderEffect</string>
+    <string name="glsl">GLSL</string>
 
     <string-array name="processor_array" tools:ignore="InconsistentArrays">
         <item>@string/renderscript_intrinsics</item>
         <item>@string/renderscript_scripts</item>
         <item>@string/vulkan</item>
+        <item>@string/glsl</item>
     </string-array>
     <string name="filter_spinner_label">Choose filter:</string>
     <string-array name="filter_array">

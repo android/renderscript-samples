@@ -90,7 +90,10 @@ class MainActivity : AppCompatActivity() {
             // RenderScript script kernels
             RenderScriptImageProcessor(this, useIntrinsic = false),
             // Vulkan compute pipeline
-            VulkanImageProcessor(this))
+            VulkanImageProcessor(this),
+            // GLSL compute pipeline
+            GLSLImageProcessor()
+        )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             // RenderEffect

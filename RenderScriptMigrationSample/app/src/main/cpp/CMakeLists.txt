@@ -23,7 +23,8 @@ add_library(rs_migration_jni
         ComputePipeline.cpp
         ImageProcessor.cpp
         VulkanContext.cpp
-        VulkanResources.cpp)
+        VulkanResources.cpp
+        GLDebug.cpp)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything -Werror")
@@ -38,8 +39,12 @@ find_library(libandroid android)
 find_library(liblog log)
 find_library(libjnigraphics jnigraphics)
 find_library(libvulkan vulkan)
+find_library(libgl GLESv3)
+find_library(libegl EGL)
 target_link_libraries(rs_migration_jni
         ${libandroid}
         ${liblog}
         ${libjnigraphics}
-        ${libvulkan})
+        ${libvulkan}
+        ${libgl}
+        ${libegl})
