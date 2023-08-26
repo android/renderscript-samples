@@ -4,6 +4,7 @@
         <item>@string/renderscript_intrinsics</item>
         <item>@string/renderscript_scripts</item>
         <item>@string/vulkan</item>
+        <item>@string/glsl</item>
         <item>@string/render_effect</item>
     </string-array>
 

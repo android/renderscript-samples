@@ -4,18 +4,18 @@
 
 [RenderScript is being deprecated](https://android-developers.googleblog.com/2021/04/android-gpu-compute-going-forward.html) since Android 12. We recommend computationally intensive applications to use [Vulkan](https://www.khronos.org/vulkan), the cross platform industry standard API. Please refer to the [RenderScript Migration Guide](https://developer.android.com/guide/topics/renderscript/migrate) for more details.
 
-To help developers for the migration, this sample is created to demonstrate how to apply the image filtering to a bitmap with the Vulkan compute pipeline. The sample creates a common ImageProcessor interface, on the top of Vulkan Compute and RenderScript, that performs two compute tasks:
+To help developers migrate, this sample is created to demonstrate how to apply image filtering to a bitmap with Renderscript Intrinsics, Renderscript Scripts, Vulkan compute pipeline, GLSL compute (in Kotlin). Since the two effects demonstrated can also be implemented using the platform RenderEffect, this is also demonstrated. The sample creates a common ImageProcessor interface that performs two compute tasks:
 - HUE rotation: A simple compute task with a single compute kernel.
 - Blur: A more complex compute task which executes two compute kernels sequentially.
 
-Both tasks are implemented with RenderScript (intrinsics & custom scripts) and Vulkan to demonstrate the migration from RenderScript to Vulkan Compute pipeline.
+Both tasks are implemented with RenderScript (intrinsics & custom scripts), GLSL, and Vulkan to demonstrate the migration from RenderScript to Vulkan or GLSL Compute pipelines.
 
 ## Pre-requisites
 
-- Android Studio Arctic Fox 2020.3.1+
-- SDK Build Tools 31.0.0+
-- NDK r20+
-- Android API 29+
+- Android Studio Flamingo 2022.2.1+
+- SDK Build Tools 34.0.0+
+- NDK 22.0.7026061
+- Android API 33+
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Both tasks are implemented with RenderScript (intrinsics & custom scripts) and V
 
 ## Support
 
-We highly recommend to use [Stack Overflow](http://stackoverflow.com/questions/tagged/android) to get help from the Andorid community.
+We highly recommend to use [Stack Overflow](http://stackoverflow.com/questions/tagged/android) to get help from the Android community.
 
 If you've found an error in this sample, please file an issue:
 https://github.com/android/renderscript-samples
