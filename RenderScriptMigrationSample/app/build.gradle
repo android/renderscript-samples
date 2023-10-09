@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdk 33
 
     // When building this project with with SDK build tools of version earlier than 31.0.0, and
     // minSdkVersion 29+, the RenderScript compiler will fail with the following error message:
@@ -44,7 +44,7 @@ android {
     sourceSets {
         main {
             jniLibs {
-                srcDirs "$android.ndkDirectory/sources/third_party/vulkan/src/build-android/jniLibs"
+                srcDirs 'src/main/jniLibs/android-binaries-sdk-1.3.261.0'
             }
         }
     }
@@ -57,6 +57,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("androidx.graphics:graphics-core:1.0.0-alpha04")
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
